@@ -17,6 +17,12 @@ class SnakeLadder {
             pos-=dice;
         }
     }
+    public void playAutomatically() {
+        while(pos!=100) {
+            checker();
+            if(pos<0) pos=0;
+        }
+    }
     public static void main(String[] args) {
         SnakeLadder ob=new SnakeLadder();
         ob.dice();
