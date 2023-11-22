@@ -1,10 +1,9 @@
-import java.util.*;
-
 class SnakeLadder {
     int pos, dice, countRoll;
 
     SnakeLadder() {
         pos = 0;
+        countRoll = 0;
     }
 
     public void dice() {
@@ -20,24 +19,37 @@ class SnakeLadder {
             if (pos > 100) {
                 pos -= dice;
             }
+            dice();
+            checker();
         } else if (pos == 1) {
             pos -= dice;
         }
     }
 
     public void playAutomatically() {
-        while(pos!=100) {
+        while (pos != 100) {
             dice();
             checker();
-            if(pos<0) pos=0;
-            System.out.printf("Position: %d",pos);
+            if (pos < 0)
+                pos = 0;
+            System.out.printf("Position: %d\n", pos);
         }
     }
 
+    public int getCountRoll() {
+        return countRoll;
+    }
+
     public static void main(String[] args) {
-        SnakeLadder ob = new SnakeLadder();
-        // ob.dice();
-        // ob.checker();
-        ob.playAutomatically();
+        SnakeLadder ob1 = new SnakeLadder();
+        SnakeLadder ob2 = new SnakeLadder();
+
+        ob1.playAutomatically();
+        ob2.playAutomatically();
+        if (ob1.getCountRoll() > ob2.getCountRoll()) {
+            System.out.println("Player 1 wins");
+        } else {
+            System.out.println("Player 2 wins");
+        }
     }
 }
