@@ -13,6 +13,9 @@ class SnakeLadder {
         int state=(int)(Math.random()*10)%3;
         if(state==0) {
             pos+=dice;
+            if(pos>100) {
+                pos-=dice;
+            }
         } else if(pos==1) {
             pos-=dice;
         }
@@ -27,5 +30,6 @@ class SnakeLadder {
         SnakeLadder ob=new SnakeLadder();
         ob.dice();
         ob.checker();
+        ob.playAutomatically();
     }
 }
